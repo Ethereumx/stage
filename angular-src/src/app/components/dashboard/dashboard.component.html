@@ -1,0 +1,72 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="jumbotron">
+      <h1>Sign a file</h1>
+
+          <div class="custom-file">
+            <input class="custom-file-input" id="inputGroupFile02" type="file" name="FileToSign" (change)='onFileChange($event)' >
+            <label class="custom-file-label" for="inputGroupFile02">{{Choose_file_to_sign}}</label>
+          </div><br><br>
+
+        <button type="button" class="btn btn-success btn-s"
+           (click)='signFile()' [disabled]="!FILE_TO_SIGNE_CHOOSED">
+              sign File
+        </button>
+      <br>
+        <hr class="my-4">
+      <br>
+
+        <div class="">
+          <h1 class="display-3" ></h1>
+        </div>
+
+        <div class="card border-info mb-3" *ngIf="signature">
+          <div class="card-header">signature</div>
+          <div class="card-body">
+            <p class="card-text">{{signature}}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col">
+
+
+      <div class="jumbotron">
+        <div class="alert alert-dismissible alert-danger" *ngIf='VALID_SIGNATUR == false'>
+          <strong>Non valide File</strong>
+        </div>
+        <div class="alert alert-dismissible alert-success" *ngIf='VALID_SIGNATUR == true'>
+          <strong>Valide File</strong>
+        </div>
+      <h1>Verify a file</h1>
+      <div class="custom-file">
+        <input class="custom-file-input" id="inputGroupFile02" type="file" name="FileToVerify" (change)='onFileChange($event)' >
+        <label class="custom-file-label" for="inputGroupFile02">{{Choose_file_to_verify}}</label>
+      </div><br><br>
+
+        <button type="button" class="btn btn-success btn-s"
+           (click)='veifyFile()' [disabled]="!FILE_TO_VERIFY_CHOOSED">
+              Verify File
+        </button>
+      <br>
+        <hr class="my-4">
+      <br>
+
+        <div class="">
+          <h1 class="display-3" ></h1>
+        </div>
+
+          <div class="card border-info mb-3" >
+            <div class="card-header">Signature</div>
+            <div class="card-body">
+              <textarea class="form-control" id="signatureToVerify" [(ngModel)]="signatureToVerify" name="signatureToVerify"></textarea>
+            </div>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</div>
